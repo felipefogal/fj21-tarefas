@@ -44,6 +44,7 @@ public class TarefasController {
 		dao.remove(tarefa);
 		return "redirect:listaTarefas";
 	}
+
 	
 	@RequestMapping("mostraTarefa")
 	public String mostra(Long id, Model model) {
