@@ -59,11 +59,20 @@ public class TarefasController {
 		return "redirect:listaTarefas";
 	}
 	
-	@ResponseBody
+//	Classe antiga deprecated
+/*	@ResponseBody
 	@RequestMapping("finalizaTarefa")
 	public void finaliza(Long id){
 		JdbcTarefaDao dao = new JdbcTarefaDao();
 		dao.finaliza(id);
+	}
+*/
+	@RequestMapping("finalizaTarefa")
+	public String finaliza(Long id, Model model) {
+		JdbcTarefaDao dao = new JdbcTarefaDao();
+		dao.finaliza(id);
+		model.addAttribute("tarefa", dao.buscaPorId(id));
+		return "tarefa/finalizada";
 	}
 	
 }
